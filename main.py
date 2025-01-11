@@ -81,6 +81,7 @@ elif(app_mode == "Prediction"):
         st.image(test_image, width=4, use_column_width=True)
     # Predict Button
     if(st.button("Predict")):
+        st.snow()
         st.image(test_image, width=4, use_column_width=True)
         st.write("Our Prediction")
         result_idx = model_pred(test_image) 
