@@ -1,5 +1,15 @@
 import streamlit as st
+import tensorflow as tf
+import numpy as np
 
+# Model Prediction Function
+def model_pred(test_image):
+    model = tf.keras.models.load_model("training_model.h5")
+    image = tf.keras.preprocessing.image.load_img(test_image, target_size=(64, 64))
+    input_arr = tf.keras.preprocessing.image.img_to_array(image)
+    input_arr = np.array([input_arr]) # Convert Single image to a batch
+    predictions = model.predict(input_arr)
+    return np.argmax(predictions) # Return index of max element
 # Sidebar Navigation
 st.sidebar.title("Dashboard")
 app_mode = st.sidebar.selectbox("Navigate to", ["Home", "About", "Prediction"])
@@ -66,4 +76,7 @@ elif(app_mode == "Prediction"):
     st.header("Prediction Model")
     test_image = st.file_uploader("Choose an Image")
     if(st.button("Show Image")):
-        st.image(test_image)
+        st.image(test_image, width=4, use_column_width=True)
+    # Predict Button
+    if(st.button("Predict")):
+        st.write("Our Prediction")
