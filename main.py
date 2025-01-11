@@ -4,12 +4,14 @@ import numpy as np
 
 # Model Prediction Function
 def model_pred(test_image):
+    """Return index of max element"""
     model = tf.keras.models.load_model("training_model.h5")
     image = tf.keras.preprocessing.image.load_img(test_image, target_size=(64, 64))
     input_arr = tf.keras.preprocessing.image.img_to_array(image)
     input_arr = np.array([input_arr]) # Convert Single image to a batch
     predictions = model.predict(input_arr)
-    return np.argmax(predictions) # Return index of max element
+    return np.argmax(predictions)
+
 # Sidebar Navigation
 st.sidebar.title("Dashboard")
 app_mode = st.sidebar.selectbox("Navigate to", ["Home", "About", "Prediction"])
@@ -79,4 +81,13 @@ elif(app_mode == "Prediction"):
         st.image(test_image, width=4, use_column_width=True)
     # Predict Button
     if(st.button("Predict")):
+        st.image(test_image, width=4, use_column_width=True)
         st.write("Our Prediction")
+        result_idx = model_pred(test_image) 
+        # Reading Labels
+        with open("label.txt") as f:
+            predict = f.readlines()
+        label = []
+        for i in predict:
+            label.append(i[:-1])
+        st.success(f"Model is Predicting it's a {label[result_idx]}")
