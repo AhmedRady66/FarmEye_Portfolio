@@ -60,3 +60,10 @@ elif (app_mode == "About"):
     )
 
     st.info("Explore the 'Prediction' page to see the model in action!")
+
+# Prediction Page
+elif(app_mode == "Prediction"):
+    st.header("Prediction Model")
+    test_image = st.file_uploader("Choose an Image")
+    if(st.button("Show Image")):
+        st.image(test_image)
