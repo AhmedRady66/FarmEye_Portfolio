@@ -77,9 +77,6 @@ elif (app_mode == "About"):
 elif(app_mode == "Prediction"):
     st.header("Prediction Model")
     test_image = st.file_uploader("Choose an Image")
-    if(st.button("Show Image")):
-        st.image(test_image, width=4, use_column_width=True)
-    # Predict Button
     if(st.button("Predict")):
         st.snow()
         st.image(test_image, width=4, use_column_width=True)
