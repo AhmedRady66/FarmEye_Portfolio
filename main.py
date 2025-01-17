@@ -17,8 +17,14 @@ st.sidebar.title("Dashboard")
 app_mode = st.sidebar.selectbox("Navigate to", ["Home", "About", "Prediction"])
 
 # Home Page
-if (app_mode == "Home"):
-    st.header("Fruits & Vegetables Recognition System")
+if app_mode == "Home":
+    st.markdown(
+        """
+        <h1 style="text-align: center;">FarmEye</h1>
+        """,
+        unsafe_allow_html=True,
+    )
+    st.subheader("Fruits & Vegetables Recognition System")
     st.image("image/Fruits_Vegetables.jpg", caption="Empowering Food Recognition with AI", use_column_width=True)
     st.markdown(
         """
@@ -28,6 +34,7 @@ if (app_mode == "Home"):
         """
     )
     st.markdown("Navigate through the sidebar to learn more about the project or try out the prediction feature!")
+
 
 # About Page
 elif (app_mode == "About"):
