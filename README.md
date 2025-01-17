@@ -65,3 +65,26 @@ Follow these steps to set up the project locally:
    streamlit run app.py
 4. Open the app in your browser at http://localhost:8501.
 
+---
+## 📑 File Structure
+
+- `app.py`: Main application file for Streamlit.
+- `training_model.h5`: Pre-trained TensorFlow model.
+- `label.txt`: List of labels for predictions.
+- `image/`: Contains images used for the interface.
+- `requirements.txt`: List of dependencies.
+
+---
+
+## 📚 How to Use
+
+1. Navigate to the **Prediction** tab.
+2. Upload an image of a fruit or vegetable.
+3. Click **Predict** to get the results.
+
+---
+
+## 🌟 Acknowledgements
+
+- TensorFlow for the powerful machine learning framework.
+- Streamlit for the seamless web app development platform.
